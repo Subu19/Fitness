@@ -42,12 +42,21 @@ public class User
 	//userinfo setup
 
 	private int age;
-	private Double height;
-	private Double weight;
+	private Float height;
+	private Float weight;
 	private String gender;
 	private String goal;
+	private String activityLevel;
 
-	public User(int age, Double height, Double weight, String gender, String goal) {
+	public String getActivityLevel() {
+		return activityLevel;
+	}
+
+	public void setActivityLevel(String activityLevel) {
+		this.activityLevel = activityLevel;
+	}
+
+	public User(int age, Float height, Float weight, String gender, String goal) {
 		this.age = age;
 		this.height = height;
 		this.weight = weight;
@@ -63,19 +72,19 @@ public class User
 		this.age = age;
 	}
 
-	public Double getHeight() {
+	public Float getHeight() {
 		return height;
 	}
 
-	public void setHeight(Double height) {
+	public void setHeight(Float height) {
 		this.height = height;
 	}
 
-	public Double getWeight() {
+	public Float getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Double weight) {
+	public void setWeight(Float weight) {
 		this.weight = weight;
 	}
 

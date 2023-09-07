@@ -58,13 +58,14 @@ public class HomeController
 	}
 
 	@RequestMapping(value = "/addProfile",method = RequestMethod.POST)
-	public String addFood(Model model, @RequestParam("weight")Double weight, @RequestParam("height") Double height, @RequestParam("age")Integer age, @RequestParam("gender")String gender, @RequestParam("goal")String goal, Principal principal){
+	public String addFood(Model model,@RequestParam("activity")String activity, @RequestParam("weight")Float weight, @RequestParam("height") Float height, @RequestParam("age")Integer age, @RequestParam("gender")String gender, @RequestParam("goal")String goal, Principal principal){
 		User user = userRepository.findByUsername(principal.getName());
 		user.setAge(age);
 		user.setGoal(goal);
 		user.setGender(gender);
 		user.setHeight(height);
 		user.setWeight(weight);
+		user.setActivityLevel(activity);
 		userRepository.save(user);
 		model.addAttribute("user", user);
 

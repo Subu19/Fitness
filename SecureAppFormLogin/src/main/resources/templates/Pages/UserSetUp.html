@@ -28,6 +28,7 @@
               />
               <input
                 type="number"
+                step=".01"
                 placeholder="Height in centimeters"
                 name="height"
                 class="input"
@@ -53,28 +54,56 @@
               <div class="sel">
                 <select id="goal" name="goal">
                   <option
-                    value="Fitness"
-                    th:selected="${user.goal == 'Fitness'}"
+                    value="MAINTAIN"
+                    th:selected="${user.goal == 'MAINTAIN'}"
                   >
                     Fitness
                   </option>
                   <option
-                    value="WeightGain"
-                    th:selected="${user.goal == 'WeightGain'}"
+                    value="BULKING"
+                    th:selected="${user.goal == 'BULKING'}"
                   >
-                    Weight Gain
+                    Bulking
                   </option>
                   <option
-                    value="WeightLoss"
-                    th:selected="${user.goal == 'WeightLoss'}"
+                    value="LOOSING_WEIGHT"
+                    th:selected="${user.goal == 'LOOSING_WEIGHT'}"
                   >
                     Weight Loss
                   </option>
+                </select>
+              </div>
+              <div class="sel">
+                <select id="activity" name="activity">
                   <option
-                    value="BodyRecomp"
-                    th:selected="${user.goal == 'BodyRecomp'}"
+                    value="SEDENTARY"
+                    th:selected="${user.activityLevel == 'SEDENTARY'}"
                   >
-                    Body Recomposition
+                    SEDENTARY
+                  </option>
+                  <option
+                    value="LIGHTLY_ACTIVE"
+                    th:selected="${user.activityLevel == 'LIGHTLY_ACTIVE'}"
+                  >
+                    LIGHTLY ACTIVE
+                  </option>
+                  <option
+                    value="MODERATELY_ACTIVE"
+                    th:selected="${user.activityLevel == 'MODERATELY_ACTIVE'}"
+                  >
+                    MODERATELY ACTIVE
+                  </option>
+                  <option
+                    value="VERY_ACTIVE"
+                    th:selected="${user.activityLevel == 'VERY_ACTIVE'}"
+                  >
+                    VERY ACTIVE
+                  </option>
+                  <option
+                    value="SUPER_ACTIVE"
+                    th:selected="${user.activityLevel == 'SUPER_ACTIVE'}"
+                  >
+                    SUPER ACTIVE
                   </option>
                 </select>
               </div>

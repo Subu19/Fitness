@@ -60,8 +60,29 @@
               ></table>
             </div>
           </div>
+          <!-- //////////////////////////////// CALORIES///////////////////  -->
+          <div class="heading">
+            <hr />
+            <h1>Calories</h1>
+            <hr />
+          </div>
+          <p>
+            According to the
+            <i>height, weight, age, gender, activity and goal</i> in your
+            profile, <br />Here is the range of calories you should be having
+            <strong>Every Day</strong>
+          </p>
+          <br />
+          <h2 class="calorie">
+            MinCalorie: <span th:text="${minCalorie}"></span>
+          </h2>
+          <h2 class="calorie">
+            MaxCalorie: <span th:text="${maxCalorie}"></span>
+          </h2>
         </div>
+        <!--//main close -->
       </div>
+
       <script>
         const table = document.getElementById("addDFoodTable");
         const searchbar = document.getElementById("DFoodSearch");
