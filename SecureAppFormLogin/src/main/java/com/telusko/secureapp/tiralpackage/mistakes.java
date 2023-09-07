@@ -12,7 +12,7 @@ public class mistakes {
         public void endtype(String g, String bt){                       // function is used after goal and body type is obtained
             if (g.equals("WG") && bt.equals("UW")) {              //WG = weight gain(goal) UG= underweight(body-type)
 //                <!--quer1 = command1-->
-                query("SELECT f_name FROM FOOD WHERE carb >= 1250 AND carb <=1800  ");
+//                query("SELECT f_name FROM FOOD WHERE carb >= 1250 AND carb <=1800  ");
             }
         }
     }

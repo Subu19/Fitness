@@ -3,10 +3,14 @@ package com.telusko.secureapp.Controllers;
 import com.telusko.secureapp.Entities.Food;
 import com.telusko.secureapp.Entities.User;
 import com.telusko.secureapp.Repo.UserRepository;
+import com.telusko.secureapp.config.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 public class HomeController 
@@ -21,7 +25,7 @@ public class HomeController
 	public String home() {
 		return "index";
 	}
-	
+
 	@RequestMapping("/login")
 	public String loginPage() {
 		return "login";
@@ -32,8 +36,11 @@ public class HomeController
 		return "register";
 	}
 
-	@RequestMapping("/PROFILE")
-	public String userinfo(){
+	@RequestMapping("/profile")
+	public String userinfo(Model model, Principal principal){
+		System.out.printf(principal.getName());
+		model.addAttribute("user",userRepository.findByUsername(principal.getName()));
+
 		return "/Pages/UserSetUp";
 	}
 
@@ -46,15 +53,22 @@ public class HomeController
 	}
 
 	@RequestMapping("/logout-success")
-	public String logoutPage()
-	{
+	public String logoutPage() {
 		return "logout.jsp";
 	}
 
-	@RequestMapping("/done")
-	public String addFood(@ModelAttribute("User") User user){
+	@RequestMapping(value = "/addProfile",method = RequestMethod.POST)
+	public String addFood(Model model, @RequestParam("weight")Double weight, @RequestParam("height") Double height, @RequestParam("age")Integer age, @RequestParam("gender")String gender, @RequestParam("goal")String goal, Principal principal){
+		User user = userRepository.findByUsername(principal.getName());
+		user.setAge(age);
+		user.setGoal(goal);
+		user.setGender(gender);
+		user.setHeight(height);
+		user.setWeight(weight);
 		userRepository.save(user);
-		return"redirect:/index";
+		model.addAttribute("user", user);
+
+		return"redirect:/profile";
 	}
 
 }

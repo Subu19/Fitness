@@ -42,12 +42,12 @@ public class User
 	//userinfo setup
 
 	private int age;
-	private int height;
-	private int weight;
+	private Double height;
+	private Double weight;
 	private String gender;
 	private String goal;
 
-	public User(int age, int height, int weight, String gender, String goal) {
+	public User(int age, Double height, Double weight, String gender, String goal) {
 		this.age = age;
 		this.height = height;
 		this.weight = weight;
@@ -63,19 +63,19 @@ public class User
 		this.age = age;
 	}
 
-	public int getHeight() {
+	public Double getHeight() {
 		return height;
 	}
 
-	public void setHeight(int height) {
+	public void setHeight(Double height) {
 		this.height = height;
 	}
 
-	public int getWeight() {
+	public Double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(int weight) {
+	public void setWeight(Double weight) {
 		this.weight = weight;
 	}
 

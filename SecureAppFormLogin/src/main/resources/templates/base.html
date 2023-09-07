@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
     <title>Title</title>
     <style>
-      /* --- Default Overrides - Personal Preference --- */
-
       *,
       *:before,
       *:after {
@@ -44,10 +43,14 @@
 
       body {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        /*background-color: #eee;*/
         color: #666;
         margin-top: 60px; /* height of nav-bar */
-        background: url(images/bg4.jpg) no-repeat center;
+        background: rgb(173, 201, 211);
+        background: linear-gradient(
+          0deg,
+          rgba(173, 201, 211, 1) 0%,
+          rgba(241, 241, 241, 1) 64%
+        );
       }
 
       p {
@@ -229,7 +232,7 @@
         .main-nav {
           max-height: 0px; /* same vertical grow transition trick as above */
           height: calc(
-                  100vh - 60px
+            100vh - 60px
           ); /* take full vertical viewport height, -60px for nav-bar */
           overflow: hidden;
           position: absolute;
@@ -278,49 +281,120 @@
 
         .main-nav li > ul li a,
         .main-nav li > ul li span {
-          background-color: #c2c2c2;
+          background-color: #eee;
         }
+      }
+      .mainContainner {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+      }
+      .main {
+        width: 100%;
+        max-width: 1000px;
+        background-color: #fcfcfc;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 30px;
+        box-shadow: rgba(0, 0, 0, 0.125) 0px 0px 50px;
+      }
 
-        .gstart {
-          justify-content: center;
-          align-content: center;
+      /* //////////////////////// input ///////////////////  */
+      input {
+        height: 30px;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        background-color: #e6e6e6;
+        padding: 5px;
+        max-width: 200px;
+        margin: 10px;
+      }
+      select {
+        height: 30px;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        background-color: #e6e6e6;
+        padding: 5px;
+        margin: 10px;
+      }
+      .form button {
+        margin: 10px;
+        height: 40px;
+        width: 70px;
+        font-size: 16px;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        outline: none;
+        border: none;
+        transition: 0.2s;
+      }
+      .form button:hover {
+        background-color: rgb(29, 156, 90);
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: rgba(0, 0, 0, 0.196) 0px 0px 10px;
+      }
+      .heading {
+        margin-top: 50px;
+        margin-bottom: 30px;
+      }
+      .heading hr {
+        outline: none;
+        border: solid 1px rgb(232, 225, 225);
+      }
+      .table td{
+        padding: 5px;
+      }
 
-        }
-
+      .table{
+        border: solid black 1px;
+        width: 100%;
+      }
+      .table tr{
+      border:solid black 1px;
+      }
+      .table tr:first{
+        background-color: #666;
+        color: white;
+        font-weight: bold;
       }
     </style>
-  </head>
-  <body>
-    <!-- //negivation -->
-    <nav class="nav-bar">
-      <div class="container">
+</head>
+<body>
+<nav class="nav-bar">
+    <div class="container">
         <input type="checkbox" id="drop-down-cbox" />
         <label for="drop-down-cbox">
-          <span></span>
-          <span></span>
-          <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </label>
 
         <h1 class="site-logo">Homepage</h1>
 
         <ul class="main-nav small-caps">
-          <li><a href="#">Home</a></li>
-          <li><a th:href="@{/profile}">Profile</a></li>
-          <li>
-            <span>Additional</span>
-            <ul>
-              <li><a th:href="@{/foods}">Food</a></li>
-              <li><a href="">Excersise</a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </li>
-          <li><a href="#">About Us</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a th:href="@{/UserSetUp}">Profile</a></li>
+            <li>
+                <span>Additional</span>
+                <ul>
+                    <li><a th:href="@{/foods}">Food</a></li>
+                    <li><a href="">Excersise</a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </li>
+            <li><a href="#">About Us</a></li>
         </ul>
-      </div>
-    </nav>
-    <!-- close negivation  -->
-<div class="gstart">
-  <button id="getstarted"><a th:href="@{/Pages/UserSetUp}">Get Started!</a></button>
-  </div>
-  </body>
+    </div>
+</nav>
+
+<div th:replace="${content}"></div>
+
+
+</body>
 </html>
