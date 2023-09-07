@@ -40,6 +40,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter
 			.csrf().disable()
 			.authorizeRequests().antMatchers("/login","/register", "/set-up").permitAll()
 				.antMatchers(HttpMethod.POST,"/do_register").permitAll()
+				.antMatchers(HttpMethod.GET,"/api/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin().defaultSuccessUrl("/",true)
