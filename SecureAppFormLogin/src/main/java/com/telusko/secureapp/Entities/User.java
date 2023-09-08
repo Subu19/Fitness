@@ -47,21 +47,33 @@ public class User
 	private String gender;
 	private String goal;
 	private String activityLevel;
-
+	private boolean isAdmin;
 	public String getActivityLevel() {
 		return activityLevel;
+	}
+
+	public boolean getAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean admin) {
+		isAdmin = admin;
 	}
 
 	public void setActivityLevel(String activityLevel) {
 		this.activityLevel = activityLevel;
 	}
 
-	public User(int age, Float height, Float weight, String gender, String goal) {
+	public User(String username, String password, int age, Float height, Float weight, String gender, String goal, String activityLevel, boolean isAdmin) {
+		this.username = username;
+		this.password = password;
 		this.age = age;
 		this.height = height;
 		this.weight = weight;
 		this.gender = gender;
 		this.goal = goal;
+		this.activityLevel = activityLevel;
+		this.isAdmin = isAdmin;
 	}
 
 	public int getAge() {

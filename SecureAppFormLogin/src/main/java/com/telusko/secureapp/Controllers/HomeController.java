@@ -48,6 +48,9 @@ public class HomeController
 	@RequestMapping(value = "/do_register",method = RequestMethod.POST)
 	public String registerUser(@ModelAttribute("User") User user){
 		user.setPassword(PasswordEncoder.encode(user.getPassword()));
+		user.setAdmin(false);
+		user.setHeight((float) 0);
+		user.setWeight((float)0);
 		this.userRepository.save(user);
 		return "redirect:/login";
 	}

@@ -13,11 +13,22 @@ public class DailyC {
     private Food food;
     private Date date;
     private int quantity;
+    @ManyToOne
+    private User user;
 
-    public DailyC(Food food, Date date, int quantity) {
+    public DailyC(Food food, Date date, int quantity, User user) {
         this.food = food;
         this.date = date;
         this.quantity = quantity;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public DailyC() {

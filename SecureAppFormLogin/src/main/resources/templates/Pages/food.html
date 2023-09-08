@@ -10,13 +10,14 @@
     <section>
         <div class="mainContainner">
             <div class="main">
-                <div class="heading">
-                    <hr />
-                    <h1>Add Food</h1>
-                    <hr />
-                </div>
 
-                <form class="form" th:action="@{/addFood}" method="post">
+
+                <form class="form" th:action="@{/addFood}" method="post" th:if="${isAdmin == true}">
+                    <div class="heading">
+                        <hr />
+                        <h1>Add Food</h1>
+                        <hr />
+                    </div>
                     <input type="text" placeholder="Name" name="name" class="input" />
                     <input type="text" placeholder="calorie" name="kcal" class="input" />
                     <input type="text" placeholder="protein" name="protein" class="input" />
