@@ -10,24 +10,46 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Double kcal;
-    private Double protein;
-    private Double carbs;
-    private Double fat;
-    private Double fibre;
-    private Double price;
+    private Float kcal;
+    private Float protein;
+    private Float carbs;
+    private Float fat;
+    private Float fibre;
+    private Float water;
+    private Float amount;
+
+    public Float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Float amount) {
+        this.amount = amount;
+    }
+
+    public void setFat(Float fat) {
+        this.fat = fat;
+    }
+
+    public Float getWater() {
+        return water;
+    }
+
+    public void setWater(Float water) {
+        this.water = water;
+    }
 
     public Food() {
     }
 
-    public Food(String name, Double kcal, Double protein, Double carbs, Double far, Double fibre, Double price) {
+    public Food(String name, Float kcal, Float protein, Float carbs, Float fat, Float fibre, Float water, Float amount) {
         this.name = name;
         this.kcal = kcal;
         this.protein = protein;
         this.carbs = carbs;
         this.fat = fat;
         this.fibre = fibre;
-        this.price = price;
+        this.water = water;
+        this.amount = amount;
     }
 
     public Long getId() {
@@ -46,51 +68,43 @@ public class Food {
         this.name = name;
     }
 
-    public Double getKcal() {
+    public Float getKcal() {
         return kcal;
     }
 
-    public void setKcal(Double kcal) {
+    public void setKcal(Float kcal) {
         this.kcal = kcal;
     }
 
-    public Double getProtein() {
+    public Float getProtein() {
         return protein;
     }
 
-    public void setProtein(Double protein) {
+    public void setProtein(Float protein) {
         this.protein = protein;
     }
 
-    public Double getCarbs() {
+    public Float getCarbs() {
         return carbs;
     }
 
-    public void setCarbs(Double carbs) {
+    public void setCarbs(Float carbs) {
         this.carbs = carbs;
     }
 
-    public Double getFat() {
+    public Float getFat() {
         return fat;
     }
 
-    public void setFar(Double fat) {
+    public void setFar(Float fat) {
         this.fat = fat;
     }
 
-    public Double getFibre() {
+    public Float getFibre() {
         return fibre;
     }
 
-    public void setFibre(Double fibre) {
+    public void setFibre(Float fibre) {
         this.fibre = fibre;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
     }
 }

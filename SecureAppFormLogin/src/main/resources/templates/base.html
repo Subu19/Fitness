@@ -48,12 +48,8 @@
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: #666;
         margin-top: 60px; /* height of nav-bar */
-        background: rgb(173, 201, 211);
-        background: linear-gradient(
-          0deg,
-          rgba(173, 201, 211, 1) 0%,
-          rgba(241, 241, 241, 1) 64%
-        );
+        background-image: url("images/logo.jpg");
+        background-size: cover;
       }
 
       p {
@@ -99,6 +95,7 @@
         width: 100%; /* full width */
         background-color: white;
         height: 60px;
+        z-index: 100;
       }
 
       .nav-bar .container {
@@ -289,18 +286,20 @@
       }
       .mainContainner {
         width: 100%;
-        height: 100vh;
         display: flex;
+        color: black;
         justify-content: center;
       }
       .main {
         width: 100%;
         max-width: 1000px;
-        background-color: #fcfcfc;
         margin: 10px;
         padding: 20px;
         border-radius: 30px;
-        box-shadow: rgba(0, 0, 0, 0.125) 0px 0px 50px;
+        background: rgba(255, 255, 255, 0.358);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(1.3px);
+        border: 1px solid rgba(255, 255, 255, 0.404);
       }
 
       /* //////////////////////// input ///////////////////  */
@@ -369,7 +368,8 @@
 
       /* //dashboard  */
       .innerContainner {
-        background-color: black;
+        /* background-color: black; */
+        border: solid white 1px;
         border-radius: 20px;
         margin: 10px;
         padding: 15px;
@@ -382,10 +382,24 @@
         margin: 10px;
         display: flex;
         align-items: center;
+        color: black;
+        border-radius: 15px;
+        border: solid rgb(255, 255, 255) 1px;
+        font-size: 20px;
+      }
+      .logoutButton {
         background-color: black;
         color: white;
-        border-radius: 15px;
-        font-size: 20px;
+        font-weight: bold;
+        transition: 0.2s;
+      }
+      .logoutButton:hover {
+        background-color: crimson;
+        border: solid black 1px;
+        transition: 0.2s;
+      }
+      .logo {
+        height: 130px;
       }
     </style>
     <script
@@ -405,21 +419,21 @@
           <span></span>
         </label>
 
-        <h1 class="site-logo">Homepage</h1>
+        <h1 class="site-logo"><img class="logo" src="/images/FT.png" /></h1>
 
         <ul class="main-nav small-caps">
-          <li><a href="@{/home}">Home</a></li>
+          <li><a th:href="@{/home}">Home</a></li>
           <li><a th:href="@{/profile}">Profile</a></li>
           <li><a th:href="@{/dashboard}">Dashboard</a></li>
           <li>
             <span>Additional</span>
             <ul>
               <li><a th:href="@{/foods}">Food</a></li>
-              <li><a href="">Excersise</a></li>
+              <li><a th:href="@{/recommendation}">Recommendation</a></li>
               <li><a href="#"></a></li>
             </ul>
           </li>
-          <li><a href="#">About Us</a></li>
+          <li><a class="logoutButton" th:href="@{/logout}">Log Out</a></li>
         </ul>
       </div>
     </nav>

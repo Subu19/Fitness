@@ -25,6 +25,10 @@ public class HomeController
 	public String home() {
 		return "index";
 	}
+	@RequestMapping("/home")
+	public String homeIndex() {
+		return "index";
+	}
 
 	@RequestMapping("/login")
 	public String loginPage() {
@@ -40,10 +44,8 @@ public class HomeController
 	public String userinfo(Model model, Principal principal){
 		System.out.printf(principal.getName());
 		model.addAttribute("user",userRepository.findByUsername(principal.getName()));
-
 		return "/Pages/UserSetUp";
 	}
-
 
 	@RequestMapping(value = "/do_register",method = RequestMethod.POST)
 	public String registerUser(@ModelAttribute("User") User user){
@@ -71,7 +73,6 @@ public class HomeController
 		user.setActivityLevel(activity);
 		userRepository.save(user);
 		model.addAttribute("user", user);
-
 		return"redirect:/profile";
 	}
 

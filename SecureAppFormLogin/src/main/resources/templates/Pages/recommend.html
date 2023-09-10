@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="base::layout(~{::section})"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <section>
+      <div class="mainContainner">
+        <div class="main">
+          <div class="heading">
+            <hr />
+            <h1>Recommendation</h1>
+            <hr />
+          </div>
+          <table class="table" border="1">
+            <tr>
+              <th>NAME</th>
+              <th>KCAL</th>
+              <th>PROTEIN</th>
+              <th>FIBRE</th>
+              <th>Quantity</th>
+            </tr>
+
+            <tbody>
+              <tr th:if="${rFoods.empty}">
+                NO FOOD
+              </tr>
+              <tr th:each="rFood : ${rFoods}">
+                <td th:text="${rFood.food.name}"></td>
+                <td th:text="${rFood.food.kcal}"></td>
+                <td th:text="${rFood.food.protein}"></td>
+                <td th:text="${rFood.food.fibre}"></td>
+                <td th:text="${rFood.quantity}" bgcolor="#ffe7a3"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

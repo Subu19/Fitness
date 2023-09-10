@@ -35,16 +35,15 @@ public class DashboardController {
         User user = userRepository.findByUsername(principal.getName());
         List<DailyC> dailyCS = dailyCRepo.getDailyCByDate( Date.valueOf(LocalDate.now()),userRepository.findByUsername(principal.getName()));
         model.addAttribute("dailyc", dailyCS);
+        model.addAttribute("dailyCalories",this.calculateCalories(dailyCS));
         double[] calories = CalorieCalculator.calculateCalorieRange(user.getHeight(),user.getWeight(),user.getAge(),user.getActivityLevel(),user.getGoal(),user.getGender());
         model.addAttribute("minCalorie", String.format("%.2f",calories[0]));
         model.addAttribute("maxCalorie",String.format("%.2f",calories[1]));
-        model.addAttribute("rFoods", this.getRecommendation(user));
-
         return "/Pages/dashboard";
     }
 
     @RequestMapping(value = "/addDailyC", method = RequestMethod.POST)
-    public String addDailyCFood(@RequestParam("quantity")Integer qt, @RequestParam("foodId")Long fid,Principal principal){
+    public String addDailyCFood(@RequestParam("quantity")Float qt, @RequestParam("foodId")Long fid,Principal principal){
         DailyC newDailyC = new DailyC();
         Food food = foodRepo.getOne(fid);
         Date date = Date.valueOf(LocalDate.now());
@@ -55,6 +54,23 @@ public class DashboardController {
         dailyCRepo.save(newDailyC);
         return "redirect:/dashboard";
     }
+
+    @RequestMapping("/recommendation")
+    public String showRecommenation(Principal principal, Model model){
+        User user = userRepository.findByUsername(principal.getName());
+        model.addAttribute("rFoods", this.getRecommendation(user));
+        return "/Pages/recommend";
+    }
+
+
+    private Float calculateCalories(List<DailyC> list){
+        Float calories = (float) 0;
+        for(DailyC d: list){
+            calories+= d.getQuantity();
+        }
+        return calories;
+    }
+
     private List<RecommendedFood> getRecommendation(User user){
 
         double calories[] = CalorieCalculator.calculateCalorieRange(user.getHeight(),user.getWeight(),user.getAge(),user.getActivityLevel(),user.getGoal(),user.getGender());

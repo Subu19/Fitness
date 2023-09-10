@@ -25,7 +25,7 @@
               <th>KCAL</th>
               <th>PROTEIN</th>
               <th>FIBRE</th>
-              <th>Quantity</th>
+              <th>Quantity in Gram</th>
             </tr>
 
             <tbody>
@@ -35,13 +35,15 @@
               <tr th:each="dfood : ${dailyc}">
                 <td th:text="${dfood.id}"></td>
                 <td th:text="${dfood.food.name}"></td>
-                <td th:text="${dfood.food.kcal}"></td>
-                <td th:text="${dfood.food.protein}"></td>
-                <td th:text="${dfood.food.fibre}"></td>
+                <td th:text="${(dfood.food.kcal/100)*dfood.quantity}"></td>
+                <td th:text="${(dfood.food.protein/100)*dfood.quantity}"></td>
+                <td th:text="${(dfood.food.fibre/100)*dfood.quantity}"></td>
                 <td th:text="${dfood.quantity}" bgcolor="#ffe7a3"></td>
               </tr>
             </tbody>
           </table>
+          <br />
+          <h3>Today's Calorie: <span th:text="${dailyCalories}"></span></h3>
 
           <div class="innerContainner">
             <h1>Add Today's food</h1>
@@ -79,33 +81,6 @@
           <h2 class="calorie">
             MaxCalorie: <span th:text="${maxCalorie}"></span>
           </h2>
-          <div class="heading">
-            <hr />
-            <h1>Recommendation</h1>
-            <hr />
-          </div>
-          <table class="table" border="1">
-            <tr>
-              <th>NAME</th>
-              <th>KCAL</th>
-              <th>PROTEIN</th>
-              <th>FIBRE</th>
-              <th>Quantity</th>
-            </tr>
-
-            <tbody>
-              <tr th:if="${rFoods.empty}">
-                NO FOOD
-              </tr>
-              <tr th:each="rFood : ${rFoods}">
-                <td th:text="${rFood.food.name}"></td>
-                <td th:text="${rFood.food.kcal}"></td>
-                <td th:text="${rFood.food.protein}"></td>
-                <td th:text="${rFood.food.fibre}"></td>
-                <td th:text="${rFood.quantity}" bgcolor="#ffe7a3"></td>
-              </tr>
-            </tbody>
-          </table>
         </div>
         <!--//main close -->
       </div>
@@ -126,8 +101,7 @@
                   <td>Name</td>
                   <td>CALORIE</td>
                   <td>Protein</td>
-                  <td>Quantity</td>
-                  <td>Action</td>
+                  <td>Quantity in Gram</td>
                 </tr>
               `;
               for (let i = 0; i < data.length; i++) {
@@ -139,17 +113,14 @@
                       <td>${food.name}</td>
                       <td>${food.kcal}</td>
                       <td>${food.protein}</td>
-                      <td colspan="2">
+                      <td >
                         <form class="form" action="/addDailyC" method="post">
                         <input type="text" name="foodId" hidden value="${food.id}">
-                        <input type="number" placeholder="Quantity" value="1" name="quantity">
+                        <input type="number"  step=".01" placeholder="Quantity" value="1" name="quantity">
                         <button type="submit">+ADD</button>
                         </form>
                       </td>
-                     
-                  
                   </tr>
-                
                 `;
               }
             })

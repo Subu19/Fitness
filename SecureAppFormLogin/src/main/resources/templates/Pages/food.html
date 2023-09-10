@@ -24,7 +24,8 @@
                     <input type="text" placeholder="carbs" name="carbs" class="input" />
                     <input type="text" placeholder="fat" name="fat" class="input" />
                     <input type="text" placeholder="fibre" name="fibre" class="input" />
-                    <input type="text" placeholder="price" name="price" class="input" />
+                     <input type="text" placeholder="water" name="water" class="input" />
+                    <input type="text" placeholder="amount" name="amount" class="input" />
                     <br>
                     <button type="submit">Add Food</button>
                 </form>
@@ -45,6 +46,7 @@
                         <th>CARB</th>
                         <th>FAT</th>
                         <th>FIBRE</th>
+                        <th>WATER</th>
                         <th>AMOUNT</th>
                     </tr>
                     </thead>
@@ -59,7 +61,8 @@
                         <td th:text="${food.carbs}"></td>
                         <td th:text="${food.fat}"></td>
                         <td th:text="${food.fibre}"></td>
-                        <td th:text="${food.price}"></td>
+                        <td th:text="${food.water}"></td>
+                        <td th:text="${food.amount}"></td>
                     </tbody>
                     </tbody>
                 </table>

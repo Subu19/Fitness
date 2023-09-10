@@ -12,11 +12,11 @@ public class DailyC {
     @ManyToOne
     private Food food;
     private Date date;
-    private int quantity;
+    private Float quantity;
     @ManyToOne
     private User user;
 
-    public DailyC(Food food, Date date, int quantity, User user) {
+    public DailyC(Food food, Date date, Float quantity, User user) {
         this.food = food;
         this.date = date;
         this.quantity = quantity;
@@ -55,10 +55,10 @@ public class DailyC {
         this.date = date;
     }
 
-    public int getQuantity() {
+    public Float getQuantity() {
         return quantity;
     }
-    public void setQuantity(int quantity) {
+    public void setQuantity(Float quantity) {
         this.quantity = quantity;
     }
 }
